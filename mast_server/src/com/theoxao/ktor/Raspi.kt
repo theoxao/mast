@@ -1,12 +1,12 @@
 package com.theoxao.ktor
 
-import com.theoxao.*
 import com.theoxao.service.*
+import com.theoxao.share.*
 import io.ktor.application.*
 import io.ktor.http.cio.websocket.*
 import io.ktor.routing.*
 import io.ktor.websocket.*
-import org.kodein.di.generic.*
+import org.koin.ktor.ext.*
 
 /**
  * @author theo
@@ -16,7 +16,7 @@ import org.kodein.di.generic.*
 
 fun Application.raspi() {
 
-    val raspiService: RaspiService by koin.instance<RaspiService>()
+    val raspiService: RaspiService by inject()
 
     routing {
         route("/raspi") {
