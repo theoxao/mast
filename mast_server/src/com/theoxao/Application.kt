@@ -36,25 +36,29 @@ fun Application.init(testing: Boolean = false) {
         sqlite()
     }
     val db = sqlite.holder.db
-    val objectMapper = ObjectMapper()
-    objectMapper.registerModule(KtormModule())
-    objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES,  true)
-    objectMapper.configure(JsonParser.Feature.IGNORE_UNDEFINED , true)
+    var objectMapper: ObjectMapper? = null
+    val cn = install(ContentNegotiation) {
+        jackson {
+            enable(SerializationFeature.INDENT_OUTPUT)
+            enable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES)
+            enable(JsonParser.Feature.IGNORE_UNDEFINED)
+            registerModule(KtormModule())
+            objectMapper = this
+        }
+    }
+
+
     install(Koin) {
         modules(
                 module {
                     single { db }
                     single { objectMapper }
                     single { RaspiRepository(get()) }
+                    single { CellRepository(get()) }
+                    single { CellService() }
                     single { RaspiService() }
                 }
         )
-    }
-
-    install(ContentNegotiation) {
-        jackson {
-            enable(SerializationFeature.INDENT_OUTPUT)
-        }
     }
 
     routing {

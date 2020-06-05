@@ -1,11 +1,14 @@
 package com.theoxao.ktor
 
+import com.theoxao.service.*
 import com.theoxao.share.*
 import io.ktor.application.*
 import io.ktor.http.cio.websocket.*
+import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.websocket.*
 import kotlinx.coroutines.*
+import org.koin.ktor.ext.*
 
 /**
  * @author theo
@@ -15,6 +18,9 @@ import kotlinx.coroutines.*
 var flush = false
 
 fun Application.api() {
+
+    val cellService :CellService by inject()
+
     routing {
         route("/api") {
             webSocket("/check_state") {
@@ -29,6 +35,15 @@ fun Application.api() {
                     }
                 }
             }
+
+            get("/cells"){
+                call.respond(cellService.listCells())
+            }
+
+            get("/rooms"){
+                call.respond(cellService.listRooms())
+            }
+
         }
     }
 }

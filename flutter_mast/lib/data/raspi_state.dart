@@ -1,0 +1,6 @@
+
+class RaspiState{
+
+String state = "";
+
+}
