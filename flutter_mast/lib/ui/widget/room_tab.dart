@@ -28,7 +28,13 @@ class _RoomTabState extends State<RoomTab> {
               children: list.map((room) {
                 return GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context){return  DeviceTab(room.cells);}));
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (context) {
+                      return Scaffold(
+                        appBar: AppBar(title: Text(room.name)),
+                        body: DeviceTab(room.cells),
+                      );
+                    }));
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -97,8 +103,7 @@ class _RoomTabState extends State<RoomTab> {
     return Chip(
       label: Text(
         count.toString(),
-        style: largererWhiteText,
-
+        style: largerWhiteText,
       ),
     );
   }

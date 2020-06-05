@@ -16,20 +16,19 @@ class Recent extends StatefulWidget {
 class _RecentState extends State<Recent> with TickerProviderStateMixin {
   CellBloc bloc = CellBloc();
 
+  TabController _tabController;
 
   @override
   Widget build(BuildContext context) {
-    var _tabController = TabController(vsync: this, length: 3);
+    if (_tabController == null) {
+      _tabController = TabController(vsync: this, length: 3);
+    }
     return StreamBuilder<List<Cell>>(
       stream: bloc.stream,
       builder: (context, AsyncSnapshot<List<Cell>> snapshot) {
         if (snapshot.hasData) {
           List<Cell> list = snapshot.data;
-          var tabs = <Widget>[
-            DeviceTab(list),
-            RoomTab(),
-            GroupTab(list)
-          ];
+          var tabs = <Widget>[DeviceTab(list), RoomTab(), GroupTab(list)];
           return Scaffold(
             appBar: AppBar(
               elevation: 1,

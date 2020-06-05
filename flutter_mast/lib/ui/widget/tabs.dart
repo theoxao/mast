@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mast/common/common.dart';
 import 'package:flutter_mast/data/cell.dart';
 
 import 'cell_widget.dart';
@@ -19,6 +20,16 @@ class _DeviceTabState extends State<DeviceTab> {
 
   @override
   Widget build(BuildContext context) {
+    if (_list == null)
+      return Container(
+        child: Center(
+          child: Text(
+            "没有设备",
+            style: largerText,
+          ),
+        ),
+        color: Colors.white,
+      );
     return Container(
       child: GridView.custom(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -30,6 +41,7 @@ class _DeviceTabState extends State<DeviceTab> {
             .toList()),
         controller: ScrollController(keepScrollOffset: false),
       ),
+      color: Colors.white,
     );
   }
 }
