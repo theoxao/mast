@@ -1,22 +1,22 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
-import 'package:flutter_mast/ui/pages/cell_detail_page.dart';
+import 'package:flutter_mast/data/device.dart';
+import 'package:flutter_mast/ui/pages/device_detail_page.dart';
 
-class CellWidget extends StatefulWidget {
-  final Cell cell;
+class DeviceWidget extends StatefulWidget {
+  final Device device;
 
-  CellWidget(this.cell);
+  DeviceWidget(this.device);
 
   @override
-  _CellWidgetState createState() => _CellWidgetState(cell);
+  _DeviceWidgetState createState() => _DeviceWidgetState(device);
 }
 
-class _CellWidgetState extends State<CellWidget> {
-  final Cell cell;
+class _DeviceWidgetState extends State<DeviceWidget> {
+  final Device device;
 
-  _CellWidgetState(this.cell);
+  _DeviceWidgetState(this.device);
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _CellWidgetState extends State<CellWidget> {
       child: GestureDetector(
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-              return CellDetailPage(cell);
+              return DeviceDetailPage(device);
             }));
           },
           child: SizedBox(
@@ -38,13 +38,13 @@ class _CellWidgetState extends State<CellWidget> {
                   shape: Border(),
                   child: CachedNetworkImage(
                     placeholder: (context, url) => CircularProgressIndicator(),
-                    imageUrl: cell.icon,
+                    imageUrl: device.icon,
                   ),
                 ),
                 SizedBox(
                   width: 80,
                   child: Text(
-                    cell.name,
+                    device.name,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: largerText,
@@ -53,7 +53,7 @@ class _CellWidgetState extends State<CellWidget> {
                 SizedBox(
                   width: 80,
                   child: Text(
-                    cell.desc,
+                    device.desc,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: secondText,

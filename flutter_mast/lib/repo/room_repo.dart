@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
+import 'package:flutter_mast/data/device.dart';
 
 class RoomRepo {
   Future<List<Room>> roomList() async {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 
 class CellList extends StatefulWidget {
   const CellList();
@@ -10,7 +9,6 @@ class CellList extends StatefulWidget {
 
 class _CellListState extends State<CellList> {
   var text = "init";
-  FlutterBlue flutterBlue = FlutterBlue.instance;
 
   @override
   void initState() {

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mast/data/cell.dart';
+import 'package:flutter_mast/data/device.dart';
 
 class CommonSwitch extends StatefulWidget {
-  final Cell cell;
+  final Device device;
 
-  CommonSwitch(this.cell);
+  CommonSwitch(this.device);
 
   @override
   _CommonSwitchState createState() => _CommonSwitchState();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mast/blocs/cell_bloc.dart';
+import 'package:flutter_mast/blocs/device_bloc.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
+import 'package:flutter_mast/data/device.dart';
 import 'package:flutter_mast/ui/widget/room_tab.dart';
 import 'package:flutter_mast/ui/widget/tabs.dart';
 
@@ -23,11 +23,11 @@ class _RecentState extends State<Recent> with TickerProviderStateMixin {
     if (_tabController == null) {
       _tabController = TabController(vsync: this, length: 3);
     }
-    return StreamBuilder<List<Cell>>(
+    return StreamBuilder<List<Device>>(
       stream: bloc.stream,
-      builder: (context, AsyncSnapshot<List<Cell>> snapshot) {
+      builder: (context, AsyncSnapshot<List<Device>> snapshot) {
         if (snapshot.hasData) {
-          List<Cell> list = snapshot.data;
+          List<Device> list = snapshot.data;
           var tabs = <Widget>[DeviceTab(list), RoomTab(), GroupTab(list)];
           return Scaffold(
             appBar: AppBar(

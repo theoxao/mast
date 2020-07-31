@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
+import 'package:flutter_mast/data/device.dart';
 
-class CellRepo {
-  Future<List<Cell>> cellList() async {
+class DeviceRepo {
+  Future<List<Device>> cellList() async {
     String url = host + "/cells";
-    print("request @ " +url);
+    print("request @ " + url);
     Response response = await Dio(getOption).get(url);
-    List<Cell> list = [];
+    List<Device> list = [];
     for (var item in response.data) {
-      list.add(Cell.fromJson(item));
+      list.add(Device.fromJson(item));
     }
     return list;
   }

@@ -4,8 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mast/blocs/room_bloc.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
-import 'package:flutter_mast/data/room.dart';
+import 'package:flutter_mast/data/device.dart';
 import 'package:flutter_mast/ui/widget/tabs.dart';
 
 class RoomTab extends StatefulWidget {
@@ -32,7 +31,7 @@ class _RoomTabState extends State<RoomTab> {
                         .push(MaterialPageRoute(builder: (context) {
                       return Scaffold(
                         appBar: AppBar(title: Text(room.name)),
-                        body: DeviceTab(room.cells),
+                        body: DeviceTab(room.devices),
                       );
                     }));
                   },
@@ -70,14 +69,13 @@ class _RoomTabState extends State<RoomTab> {
                                       room.name,
                                       style: largererWhiteText,
                                     ),
-
                                   ],
                                 ),
                               ),
                               Positioned(
                                   right: 16,
                                   top: 0,
-                                  child: count(room.cells)),
+                                  child: count(room.devices)),
                             ],
                           )
                         ],
@@ -94,7 +92,7 @@ class _RoomTabState extends State<RoomTab> {
     );
   }
 
-  Widget count(List<Cell> list) {
+  Widget count(List<Device> list) {
     var count = 0;
     if (list?.length != null) {
       count = list.length;

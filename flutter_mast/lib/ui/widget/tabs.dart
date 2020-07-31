@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mast/common/common.dart';
-import 'package:flutter_mast/data/cell.dart';
+import 'package:flutter_mast/data/device.dart';
 
 import 'cell_widget.dart';
 
 class DeviceTab extends StatefulWidget {
-  final List<Cell> list;
+  final List<Device> list;
 
   DeviceTab(this.list);
 
@@ -14,7 +14,7 @@ class DeviceTab extends StatefulWidget {
 }
 
 class _DeviceTabState extends State<DeviceTab> {
-  final List<Cell> _list;
+  final List<Device> _list;
 
   _DeviceTabState(this._list);
 
@@ -36,7 +36,7 @@ class _DeviceTabState extends State<DeviceTab> {
             crossAxisCount: 3, childAspectRatio: 0.7),
         childrenDelegate: SliverChildListDelegate(_list
             .map((e) => GridTile(
-                  child: CellWidget(e),
+          child: DeviceWidget(e),
                 ))
             .toList()),
         controller: ScrollController(keepScrollOffset: false),
@@ -47,7 +47,7 @@ class _DeviceTabState extends State<DeviceTab> {
 }
 
 class GroupTab extends StatefulWidget {
-  final List<Cell> list;
+  final List<Device> list;
 
   GroupTab(this.list);
 

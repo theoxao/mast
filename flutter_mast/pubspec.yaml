@@ -33,7 +33,7 @@ dependencies:
   rxdart: 0.24.1
   dio: 3.0.9
   cached_network_image: 2.2.0+1
-  flutter_blue: 0.7.2
+#  flutter_blue: 0.7.2
   permission_handler: 5.0.0+hotfix.8
 
 dev_dependencies:

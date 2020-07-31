@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:web_socket_channel/io.dart';
 
 import '../../common/common.dart';
-import 'cells_page.dart';
+import 'device.dart';
 import 'recent_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,29 +22,27 @@ class _HomePageState extends State<HomePage> {
   var index = 0;
   static const _options = const<Widget>[
     Recent(),
-    CellList()
-  ];
-
+    CellList()];
 
   static const List<BottomNavigationBarItem> items =
-  const<BottomNavigationBarItem>[
+      const <BottomNavigationBarItem>[
     BottomNavigationBarItem(icon: Icon(Icons.find_in_page), title: Text("最近")),
     BottomNavigationBarItem(
         icon: Icon(Icons.format_align_left), title: Text("全部"))
   ];
 
-
-  final channel =
-  IOWebSocketChannel.connect("ws://www.theoxao.com:8080/api/check_state");
+//
+//  final channel =
+//  IOWebSocketChannel.connect("ws://www.theoxao.com:8080/api/check_state");
 
   @override
   void initState() {
     super.initState();
     timer = Timer.periodic(Duration(seconds: 1), (Timer t) => checkState());
-    channel.stream.listen((msg) {
-      currentState = msg;
-      this.fin = true;
-    });
+//    channel.stream.listen((msg) {
+//      currentState = msg;
+//      this.fin = true;
+//    });
   }
 
   checkState() {
@@ -54,7 +51,7 @@ class _HomePageState extends State<HomePage> {
           .now()
           .millisecondsSinceEpoch
           .toString();
-      channel.sink.add(ts);
+//      channel.sink.add(ts);
       this.fin = false;
     }
   }

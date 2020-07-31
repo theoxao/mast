@@ -1,6 +1,0 @@
-
-class RaspiState{
-
-String state = "";
-
-}

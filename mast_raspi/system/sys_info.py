@@ -5,3 +5,4 @@ def get_mem_info():
             if line.startswith('MemFree'):
                 return line
     return "get mem info error"
+
